@@ -1,5 +1,8 @@
 window._ = require('lodash');
 
+//Noty
+window.Noty = require('noty');
+
 try {
     require('bootstrap');
 } catch (e) {}
