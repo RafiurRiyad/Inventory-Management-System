@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row col-xl-3 col-lg-3 col-md-3">
-            <router-link to="/employee" class="btn btn-primary btn-sm">All employee</router-link>
+            <router-link to="/supplier" class="btn btn-primary btn-sm">All Supplier</router-link>
         </div>
         <div class="row justify-content-center">
             <div class="col-xl-12 col-lg-12 col-md-12">
@@ -11,9 +11,9 @@
                     <div class="col-lg-12">
                         <div class="login-form">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4 btn-sm">Add Employee</h1>
+                            <h1 class="h4 text-gray-900 mb-4 btn-sm">Add Supplier</h1>
                         </div>
-                        <form class="user" @submit.prevent="employeeInsert" enctype="multipart/form-data">
+                        <form class="user" @submit.prevent="supplierInsert" enctype="multipart/form-data">
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col-md-6">
@@ -29,32 +29,20 @@
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col-md-6">
+                                    <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Phone Number" v-model="form.phone">
+                                    <small class="text-danger" v-if="errors.phone">{{ errors.phone[0] }}</small>
+                                    </div>
+                                    <div class="col-md-6">
                                     <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Address" v-model="form.address">
                                     <small class="text-danger" v-if="errors.address">{{ errors.address[0] }}</small>
                                     </div>
-                                    <div class="col-md-6">
-                                    <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter Your Salary" v-model="form.salary">
-                                    <small class="text-danger" v-if="errors.salary">{{ errors.salary[0] }}</small>
-                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                    <input type="date" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Joining Date" v-model="form.joining_date">
-                                    <small class="text-danger" v-if="errors.joining_date">{{ errors.joining_date[0] }}</small>
-                                    </div>
-                                    <div class="col-md-6">
-                                    <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter Your NID" v-model="form.nid">
-                                    <small class="text-danger" v-if="errors.nid">{{ errors.nid[0] }}</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                    <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Phone Number" v-model="form.phone">
-                                    <small class="text-danger" v-if="errors.phone">{{ errors.phone[0] }}</small>
+                                    <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter Your Shop Name" v-model="form.shopname">
+                                    <small class="text-danger" v-if="errors.shopname">{{ errors.shopname[0] }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -97,11 +85,9 @@ export default {
             form:{
                 name: null,
                 email: null,
-                address: null,
-                salary: null,
-                joining_date: null,
-                nid: null,
                 phone: null,
+                address: null,
+                shopname: null,
                 photo: null,
             },
             errors:{},
@@ -121,10 +107,10 @@ export default {
                 reader.readAsDataURL(file);
             }
         },
-        employeeInsert(){
-            axios.post('/api/employee',this.form)
+        supplierInsert(){
+            axios.post('/api/supplier',this.form)
             .then(() => {
-                this.$router.push({ name: 'employee'})
+                this.$router.push({ name: 'supplier'})
                 Notification.success()
             })
             .catch(error => this.errors = error.response.data.errors)

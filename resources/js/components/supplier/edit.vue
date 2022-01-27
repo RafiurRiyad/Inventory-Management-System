@@ -1,19 +1,19 @@
 <template>
     <div>
         <div class="row col-xl-3 col-lg-3 col-md-3">
-            <router-link to="/employee" class="btn btn-primary btn-sm">All employee</router-link>
+            <router-link to="/supplier" class="btn btn-primary btn-sm">Add Supplier</router-link>
         </div>
         <div class="row justify-content-center">
-            <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="col-xl-112 col-lg-12 col-md-12">
                 <div class="card shadow-sm my-5">
                 <div class="card-body p-0">
                     <div class="row">
                     <div class="col-lg-12">
                         <div class="login-form">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4 btn-sm">Add Employee</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Supplier Update</h1>
                         </div>
-                        <form class="user" @submit.prevent="employeeInsert" enctype="multipart/form-data">
+                        <form class="user" @submit.prevent="supplierUpdate" enctype="multipart/form-data">
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col-md-6">
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                            <button type="submit" class="btn btn-primary btn-block">Update</button>
                             </div>
                             <hr>
                         </form>
@@ -95,17 +95,22 @@ export default {
     data(){
         return {
             form:{
-                name: null,
-                email: null,
-                address: null,
-                salary: null,
-                joining_date: null,
-                nid: null,
-                phone: null,
-                photo: null,
+                name: '',
+                email: '',
+                phone: '',
+                address: '',
+                shopname: '',
+                photo: '',
+                newphoto: '',
             },
             errors:{},
         }
+    },
+    created() {
+        let id = this.$route.params.id
+        axios.get('/api/supplier/'+id)
+        .then(({data}) => (this.form = data))
+        .catch(console.log('error'))
     },
     methods: {
         onFileSelected(event){
@@ -115,16 +120,17 @@ export default {
             }else{
                 let reader = new FileReader();
                 reader.onload = event =>{
-                    this.form.photo = event.target.result;
-                    console.log(event.target.result);
+                    this.form.newphoto = event.target.result;
+                    //console.log(event.target.result);
                 };
                 reader.readAsDataURL(file);
             }
         },
-        employeeInsert(){
-            axios.post('/api/employee',this.form)
+        supplierUpdate(){
+            let id = this.$route.params.id
+            axios.patch('/api/supplier/'+id,this.form)
             .then(() => {
-                this.$router.push({ name: 'employee'})
+                this.$router.push({ name: 'supplier'})
                 Notification.success()
             })
             .catch(error => this.errors = error.response.data.errors)
