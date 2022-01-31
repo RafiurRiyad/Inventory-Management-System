@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
-use App\Models\Model\Supplier;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
@@ -17,8 +17,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $supplier = Supplier::all();
-        return response()->json($supplier);
+        $suppliers = Supplier::all();
+        return response()->json($suppliers);
     }
 
     /**
