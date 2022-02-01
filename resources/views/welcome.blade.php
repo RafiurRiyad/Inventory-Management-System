@@ -28,13 +28,14 @@
         <div class="sidebar-brand-icon">
           <img src="{{asset('backend/img/logo/logo2.png')}}">
         </div>
-        <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+        <div class="sidebar-brand-text mx-3">Invertory Management</div>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <<router-link to="/home" class="nav-link">
+        <router-link to="/home" class="nav-link">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></router-link>
+          <span>Dashboard</span>
+        </router-link>
       </li>
       <hr class="sidebar-divider">
       <div class="sidebar-heading">
@@ -80,15 +81,41 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap4"
-          aria-expanded="true" aria-controls="collapseBootstrap4">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap3"
+          aria-expanded="true" aria-controls="collapseBootstrap3">
           <i class="far fa-fw fa-window-maximize"></i>
           <span>Product</span>
         </a>
-        <div id="collapseBootstrap4" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+        <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
           <router-link to="/store-product" class="collapse-item">Add Product</router-link>
           <router-link to="/product" class="collapse-item">All Products</router-link>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap4"
+          aria-expanded="true" aria-controls="collapseBootstrap4">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Expense</span>
+        </a>
+        <div id="collapseBootstrap4" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+          <router-link to="/store-expense" class="collapse-item">Add Expense</router-link>
+          <router-link to="/expense" class="collapse-item">All Expenses</router-link>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap5"
+          aria-expanded="true" aria-controls="collapseBootstrap5">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>Salary</span>
+        </a>
+        <div id="collapseBootstrap5" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+          <router-link to="/given-salary" class="collapse-item">Add Salary</router-link>
+          <router-link to="/salary" class="collapse-item">All Salary</router-link>
           </div>
         </div>
       </li>
@@ -96,12 +123,14 @@
 
 
       
-      <li class="nav-item">
-        <a class="nav-link" href="forms.html">
+      <li class="nav-item collapsed">
+        <router-link to="/stock" class="nav-link">
           <i class="fab fa-fw fa-wpforms"></i>
-          <span>Forms</span>
-        </a>
+          <span>Stock</span>
+        </router-link>
       </li>
+
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
           aria-controls="collapseTable">

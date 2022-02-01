@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Expense;
 use Illuminate\Http\Request;
-use App\Models\Catagory;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class CatagoryController extends Controller
+class ExpenseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CatagoryController extends Controller
      */
     public function index()
     {
-        $catagories = Catagory::all();
-        return response()->json($catagories,200);
+        $expenses = Expense::all();
+        return response()->json($expenses,200);
     }
 
     /**
@@ -39,12 +39,15 @@ class CatagoryController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'catagory_name'=>'required|unique:catagories|max:255',
+            'details'=>'required',
+            'amount'=>'required|max:255',
         ]);
         
-        $catagory = new Catagory;
-        $catagory->catagory_name = $request->catagory_name;
-        $catagory->save();
+        $expense = new Expense;
+        $expense->details = $request->details;
+        $expense->amount = $request->amount;
+        $expense->expense_date = date('d/m/y');
+        $expense->save();
     }
 
     /**
@@ -55,8 +58,8 @@ class CatagoryController extends Controller
      */
     public function show($id)
     {
-        $catagories = DB::table('catagories')->where('id',$id)->first();
-        return response()->json($catagories);
+        $expenses = DB::table('expenses')->where('id',$id)->first();
+        return response()->json($expenses);
     }
 
     /**
@@ -80,8 +83,9 @@ class CatagoryController extends Controller
     public function update(Request $request, $id)
     {
         $data = array();
-        $data['catagory_name'] = $request->catagory_name;
-        $name = DB::table('catagories')->where('id', $id)->update($data);
+        $data['details'] = $request->details;
+        $data['amount'] = $request->amount;
+        $expense = DB::table('expenses')->where('id', $id)->update($data);
     }
 
     /**
@@ -92,6 +96,6 @@ class CatagoryController extends Controller
      */
     public function destroy($id)
     {
-        $supplier = DB::table('catagories')->where('id', $id)->delete();
+        $expense = DB::table('expenses')->where('id', $id)->delete();
     }
 }

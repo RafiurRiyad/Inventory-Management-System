@@ -17,12 +17,12 @@
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                    <label for="exampleFormControlSelect1">Product Name</label>
+                                    <label for="exampleFormControlSelect1"><b>Product Name</b></label>
                                     <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Product Name" v-model="form.product_name">
                                     <small class="text-danger" v-if="errors.product_name">{{ errors.product_name[0] }}</small>
                                     </div>
                                     <div class="col-md-6">
-                                    <label for="exampleFormControlSelect1">Product Code</label>
+                                    <label for="exampleFormControlSelect1"><b>Product Code</b></label>
                                     <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Product Code" v-model="form.product_code">
                                     <small class="text-danger" v-if="errors.product_code">{{ errors.product_code[0] }}</small>
                                     </div>
@@ -31,13 +31,13 @@
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                    <label for="exampleFormControlSelect1">Product Category</label>
+                                    <label for="exampleFormControlSelect1"><b>Product Category</b></label>
                                     <select class="form-control" id="exampleFormControlSelect1" v-model="form.catagory_id">
                                         <option :value="catagory.id" v-for="catagory in catagories">{{catagory.catagory_name}}</option>
                                     </select>
                                     </div>
                                     <div class="col-md-6">
-                                    <label for="exampleFormControlSelect1">Product Supplier</label>
+                                    <label for="exampleFormControlSelect1"><b>Product Supplier</b></label>
                                     <select class="form-control" id="exampleFormControlSelect1" v-model="form.supplier_id">
                                         <option :value="supplier.id" v-for="supplier in suppliers">{{supplier.name}}</option>
                                     </select>
@@ -47,12 +47,12 @@
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                    <label for="exampleFormControlSelect1">Buying Date</label>
+                                    <label for="exampleFormControlSelect1"><b>Buying Date</b></label>
                                     <input type="date" class="form-control" id="exampleInputFirstName" placeholder="Enter Your Buying Date" v-model="form.buying_date">
                                     <small class="text-danger" v-if="errors.buying_date">{{ errors.buying_date[0] }}</small>
                                     </div>
                                     <div class="col-md-6">
-                                    <label for="exampleFormControlSelect1">Product Quantity</label>
+                                    <label for="exampleFormControlSelect1"><b>Product Quantity</b></label>
                                     <input type="text" class="form-control" id="exampleInputEmail" placeholder="Enter Your Product Quantity" v-model="form.product_quantity">
                                     <small class="text-danger" v-if="errors.product_quantity">{{ errors.product_quantity[0] }}</small>
                                     </div>
@@ -62,17 +62,17 @@
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col-md-4">
-                                    <label for="exampleFormControlSelect1">Product Root</label>
+                                    <label for="exampleFormControlSelect1"><b>Product Root</b></label>
                                     <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Root" v-model="form.root">
                                     <small class="text-danger" v-if="errors.root">{{ errors.root[0] }}</small>
                                     </div>
                                     <div class="col-md-4">
-                                    <label for="exampleFormControlSelect1">Buying Price</label>
+                                    <label for="exampleFormControlSelect1"><b>Buying Price</b></label>
                                     <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter Buying Price" v-model="form.buying_price">
                                     <small class="text-danger" v-if="errors.buying_price">{{ errors.buying_price[0] }}</small>
                                     </div>
                                     <div class="col-md-4">
-                                    <label for="exampleFormControlSelect1">Selling Price</label>
+                                    <label for="exampleFormControlSelect1"><b>Selling Price</b></label>
                                     <input type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Selling Price" v-model="form.selling_price">
                                     <small class="text-danger" v-if="errors.selling_price">{{ errors.selling_price[0] }}</small>
                                     </div>
@@ -83,7 +83,7 @@
                                     <div class="col-md-6">
                                         <input type="file" class="custom-file-input" id="customFile" @change="onFileSelected">
                                         <small class="text-danger" v-if="errors.image">{{ errors.image[0] }}</small>
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                        <label class="custom-file-label" for="customFile"><b>Choose file</b></label>
                                     </div>
                                     <div class="col-md-6">
                                         <img :src="form.image" style="height: 40px; width: 40px;" alt="">
