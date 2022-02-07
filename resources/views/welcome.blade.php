@@ -28,7 +28,7 @@
         <div class="sidebar-brand-icon">
           <img src="{{asset('backend/img/logo/logo2.png')}}">
         </div>
-        <div class="sidebar-brand-text mx-3">Invertory Management</div>
+        <div class="sidebar-brand-text mx-3">Inventory Management</div>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
@@ -37,7 +37,7 @@
           <span>Dashboard</span>
         </router-link>
       </li>
-      <li class="nav-item bg-info">
+      <li class="nav-item active">
         <router-link to="/pos" class="nav-link">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>POS</span>

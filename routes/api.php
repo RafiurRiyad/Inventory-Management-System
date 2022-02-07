@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PosController;
@@ -44,4 +45,12 @@ Route::post('/salary/update/{id}', [SalaryController::class, 'UpdateSalary']);
 Route::post('/stock/update/{id}', [ProductController::class, 'StockUpdate']);
 
 Route::get('/getting/product/{id}', [PosController::class, 'GetProduct']);
+Route::get('/add-to-cart/{id}', [CartController::class, 'AddToCart']);
+Route::get('/cart/product/', [CartController::class, 'CartProduct']);
+Route::get('/remove/cart/{id}', [CartController::class, 'CartRemove']);
+Route::get('/increment/{id}', [CartController::class, 'CartIncrement']);
+Route::get('/decrement/{id}', [CartController::class, 'CartDecrement']);
+
+//vat route
+Route::get('/vat', [CartController::class, 'Vat']);
 
