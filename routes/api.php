@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\CartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PosController;
+use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\SalaryController;
 use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\Api\ProductController;
@@ -54,3 +55,16 @@ Route::get('/decrement/{id}', [CartController::class, 'CartDecrement']);
 //vat route
 Route::get('/vat', [CartController::class, 'Vat']);
 
+//order routes
+Route::post('/orderdone', [PosController::class, 'OrderDone']);
+Route::get('/orders', [OrderController::class, 'TodayOrder']);
+Route::get('/order/details/{id}', [OrderController::class, 'OrderDetails']);
+Route::get('/order/order-details/{id}', [OrderController::class, 'OrderDetailsAll']);
+Route::post('/search/order', [PosController::class, 'SearchOrderDate']);
+
+//Admin Dashboard
+Route::post('/today/sell', [PosController::class, 'TodaySell']);
+Route::post('/today/income', [PosController::class, 'TodayIncome']);
+Route::post('/today/due', [PosController::class, 'TodayDue']);
+Route::post('/today/expense', [PosController::class, 'TodayExpense']);
+Route::post('/stockout', [PosController::class, 'StockOut']);

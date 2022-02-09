@@ -65,7 +65,7 @@
                     <form @submit.prevent="orderDone">
                         <label for="name">Customer Name</label>
                         <select class="form-control" v-model="customer_id">
-                            <option value="customer.id" v-for="customer in customers"> {{ customer.name }}</option>
+                            <option :value="customer.id" v-for="customer in customers"> {{ customer.name }}</option>
                         </select>
                         <label for="pay">Pay</label>
                         <input type="text" class="form-control" required v-model="pay">
@@ -170,6 +170,10 @@ export default {
     },
     data(){
         return {
+            customer_id:'',
+            pay:'',
+            due:'',
+            payby:'',
             errors: '',
             products:[],
             catagories:[],
@@ -270,6 +274,22 @@ export default {
             axios.get('/api/vat/')
             .then(({data}) => (this.vats = data))
             .catch()
+        },
+        orderDone(){
+            let total = this.sub_total + (this.sub_total * (this.vats.vat/100));
+            var data = { qty: this.qty, sub_total: this.sub_total, customer_id: this.customer_id, pay: this.pay, due: this.due, payby: this.payby, vat:this.vats.vat, total:total};
+            axios.post('/api/orderdone',data)
+            .then(() => {
+                Notification.success()
+                this.$router.push({name: 'home'})
+            })
+            .catch(error => this.errors = error.response.data.errors)
+            .catch(
+                Toast.fire({
+                icon: 'warning',
+                title: 'Something Went Wrong!'
+                })
+            )
         },
     },
     
